@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Free Online Tools - 100+ Useful Tools for Everyone Worldwide</title>
+<meta name="description" content="Free Online Tools - Best collection of 100+ free tools for everyone. Image tools, Text tools, Calculators, Converters, Generators. Fast, free, worldwide.">
+<meta name="keywords" content="free online tools, online tools, free tools, image tools, text tools, calculator, converter">
+<meta name="google-site-verification" content="">
+<meta name="monetag" content="10c78ea7e248ab0cb3e1ae91824c06be">
+<script src="https://quge5.com/88/tag.min.js" data-zone="265330" async data-cfasync="false"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,Arial}
+body{background:#0f172a;color:#e2e8f0;padding:20px}
+.header{text-align:center;padding:30px 10px}
+.header h1{font-size:2.2rem;color:#38bdf8}
+.header p{margin-top:10px;color:#94a3b8;max-width:600px;margin-inline:auto}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;max-width:1100px;margin:20px auto}
+.card{background:#1e293b;border:1px solid #334155;border-radius:14px;padding:18px;transition:.2s}
+.card:hover{transform:translateY(-4px);border-color:#38bdf8}
+.card h3{color:#f1f5f9;font-size:1.1rem;margin-bottom:6px}
+.card p{font-size:.85rem;color:#94a3b8;margin-bottom:12px}
+.card button{background:#38bdf8;color:#0f172a;border:0;padding:8px 14px;border-radius:8px;font-weight:600;cursor:pointer;width:100%}
+.tool-box{display:none;background:#1e293b;padding:20px;border-radius:14px;max-width:600px;margin:20px auto;border:1px solid #334155}
+.tool-box input, .tool-box textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #334155;background:#0f172a;color:white;margin:8px 0}
+.result{margin-top:10px;background:#0f172a;padding:10px;border-radius:8px;font-size:.9rem}
+footer{text-align:center;margin-top:40px;color:#64748b;font-size:.8rem;padding:20px}
+</style>
+</head>
+<body>
+<div class="header">
+<h1>Free Online Tools</h1>
+<p>100+ Free, Fast & Easy Tools for Everyone Worldwide - No Signup Needed. Image, Text, Calculators, Converters, SEO Tools & More.</p>
+<p style="margin-top:10px;font-size:.8rem">Your URL: <b>https://raoimran5684.github.io/free-online-tools/</b></p>
+</div>
+
+<div class="grid" id="toolsGrid"></div>
+
+<div id="toolContainer" class="tool-box">
+<h2 id="toolTitle"></h2>
+<div id="toolContent"></div>
+<button onclick="document.getElementById('toolContainer').style.display='none'" style="margin-top:10px;background:#334155;color:white;padding:8px 14px;border:0;border-radius:8px;width:100%">Close</button>
+</div>
+
+<footer>
+© 2026 Free Online Tools by Rao Imran - Worldwide Free Tools | Monetag Verified Ready
+</footer>
+
+<script>
+const tools=[
+{name:"Age Calculator",desc:"Calculate exact age from DOB",func:ageCalc},
+{name:"Word Counter",desc:"Count words, chars, sentences",func:wordCount},
+{name:"QR Code Generator",desc:"Make QR for any text/link",func:qrGen},
+{name:"Password Generator",desc:"Strong random passwords",func:passGen},
+{name:"Case Converter",desc:"Upper, lower, title case",func:caseConv},
+{name:"BMI Calculator",desc:"Check your Body Mass Index",func:bmiCalc},
+{name:"Percentage Calculator",desc:"Find % easily",func:perCalc},
+{name:"Base64 Encoder",desc:"Encode / Decode Base64",func:b64Tool}
+];
+
+const grid=document.getElementById('toolsGrid');
+tools.forEach((t,i)=>{
+ grid.innerHTML+=`<div class="card"><h3>${t.name}</h3><p>${t.desc}</p><button onclick="openTool(${i})">Open Tool</button></div>`;
+});
+
+function openTool(i){
+ const t=tools[i];
+ document.getElementById('toolTitle').innerText=t.name;
+ document.getElementById('toolContent').innerHTML='';
+ document.getElementById('toolContainer').style.display='block';
+ t.func();
+ window.scrollTo({top:document.getElementById('toolContainer').offsetTop-20,behavior:'smooth'});
+}
+
+function ageCalc(){
+ document.getElementById('toolContent').innerHTML=`<input type="date" id="dob"><button onclick="calcAge()" style="background:#38bdf8;color:#0f172a;border:0;padding:8px 14px;border-radius:8px;width:100%;margin-top:8px">Calculate</button><div id="res" class="result"></div>`;
+}
+function calcAge(){
+ const dob=new Date(document.getElementById('dob').value);
+ if(!dob.getTime())return;
+ const diff=Date.now()-dob.getTime();
+ const age=new Date(diff).getUTCFullYear()-1970;
+ document.getElementById('res').innerText=`You are ${age} years old`;
+}
+function wordCount(){
+ document.getElementById('toolContent').innerHTML=`<textarea id="txt" rows="5" placeholder="Type text..."></textarea><div id="res" class="result">0 Words, 0 Chars</div>`;
+ document.getElementById('txt').addEventListener('input',e=>{
+  const v=e.target.value.trim();
+  const w=v?v.split(/\s+/).length:0;
+  document.getElementById('res').innerText=`${w} Words, ${v.length} Chars`;
+ });
+}
+function qrGen(){
+ document.getElementById('toolContent').innerHTML=`<input id="qrtext" placeholder="Enter text or URL"><button onclick="makeQR()" style="background:#38bdf8;color:#0f172a;border:0;padding:8px 14px;border-radius:8px;width:100%;margin-top:8px">Generate</button><div id="res" class="result" style="text-align:center"></div>`;
+}
+function makeQR(){
+ const txt=document.getElementById('qrtext').value;
+ if(!txt)return;
+ document.getElementById('res').innerHTML=`<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(txt)}" alt="QR">`;
+}
+function passGen(){
+ document.getElementById('toolContent').innerHTML=`<button onclick="genPass()" style="background:#38bdf8;color:#0f172a;border:0;padding:8px 14px;border-radius:8px;width:100%">Generate Password</button><div id="res" class="result" style="font-weight:bold;font-size:1.1rem;word-break:break-all"></div>`;
+}
+function genPass(){
+ const chars="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
+ let p=""; for(let i=0;i<12;i++)p+=chars[Math.floor(Math.random()*chars.length)];
+ document.getElementById('res').innerText=p;
+}
+function caseConv(){
+ document.getElementById('toolContent').innerHTML=`<textarea id="ctxt" rows="4" placeholder="Type..."></textarea><div style="display:flex;gap:6px;margin-top:8px"><button onclick="document.getElementById('ctxt').value=document.getElementById('ctxt').value.toUpperCase()" style="flex:1">UPPER</button><button onclick="document.getElementById('ctxt').value=document.getElementById('ctxt').value.toLowerCase()" style="flex:1">lower</button><button onclick="toTitle()" style="flex:1">Title</button></div>`;
+}
+function toTitle(){let v=document.getElementById('ctxt').value; document.getElementById('ctxt').value=v.replace(/\w\S*/g,w=>w.charAt(0).toUpperCase()+w.substr(1).toLowerCase());}
+function bmiCalc(){
+ document.getElementById('toolContent').innerHTML=`<input id="wh" type="number" placeholder="Weight kg"><input id="ht" type="number" placeholder="Height cm"><button onclick="calcBMI()" style="background:#38bdf8;color:#0f172a;border:0;padding:8px 14px;border-radius:8px;width:100%;margin-top:8px">Calculate BMI</button><div id="res" class="result"></div>`;
+}
+function calcBMI(){
+ const w=parseFloat(document.getElementById('wh').value), h=parseFloat(document.getElementById('ht').value)/100;
+ if(!w||!h)return;
+ const bmi=(w/(h*h)).toFixed(2);
+ document.getElementById('res').innerText=`Your BMI is ${bmi}`;
+}
+function perCalc(){
+ document.getElementById('toolContent').innerHTML=`<input id="p1" type="number" placeholder="What is"><input id="p2" type="number" placeholder="% of"><input id="p3" type="number" placeholder="Number"><button onclick="calcPer()" style="background:#38bdf8;color:#0f172a;border:0;padding:8px 14px;border-radius:8px;width:100%;margin-top:8px">Calculate</button><div id="res" class="result"></div>`;
+}
+function calcPer(){
+ const a=parseFloat(document.getElementById('p2').value), b=parseFloat(document.getElementById('p3').value);
+ if(!a||!b)return;
+ document.getElementById('res').innerText=`Result: ${(a/100)*b}`;
+}
+function b64Tool(){
+ document.getElementById('toolContent').innerHTML=`<textarea id="btxt" rows="4" placeholder="Enter text"></textarea><div style="display:flex;gap:6px;margin-top:8px"><button onclick="document.getElementById('bres').innerText=btoa(document.getElementById('btxt').value)" style="flex:1">Encode</button><button onclick="try{document.getElementById('bres').innerText=atob(document.getElementById('btxt').value)}catch(e){document.getElementById('bres').innerText='Invalid Base64'}" style="flex:1">Decode</button></div><div id="bres" class="result" style="word-break:break-all"></div>`;
+}
+</script>
+<!-- Monetag verification / ads code paste here -->
+</body>
+</html>
