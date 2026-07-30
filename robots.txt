@@ -1,1 +1,4 @@
+User-agent: *
+Allow: /
 
+Sitemap: https://raoimran5684.github.io/free-online-tools/sitemap.xml
