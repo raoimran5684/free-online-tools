@@ -3,64 +3,80 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Free Online Tools - 100+ Useful Tools for Everyone Worldwide</title>
-<meta name="description" content="Free Online Tools - Best collection of 100+ free tools for everyone. Image tools, Text tools, Calculators, Converters, Generators. Fast, free, worldwide.">
-<meta name="monetag" content="10c78ea7e248ab0cb3e1ae91824c06be">
-<meta name="msvalidate.01" content="951F400C385DB2C1A983279C846ADAB2" />
+<title>Rao's Free Online Tools - Useful Tools for Everyone</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:system-ui,Arial}
-body{background:#0f172a;color:#e2e8f0;padding:20px}
-.header{text-align:center;padding:30px 10px}
-.header h1{font-size:2.2rem;color:#38bdf8}
-.header p{margin-top:10px;color:#94a3b8;max-width:600px;margin-inline:auto}
+:root{--bg:#0f172a;--card:#1e293b;--text:#e2e8f0;--muted:#94a3b8;--border:#334155;--accent:#38bdf8}
+body.light{--bg:#f8fafc;--card:#ffffff;--text:#0f172a;--muted:#64748b;--border:#e2e8f0;--accent:#0ea5e9}
+body{background:var(--bg);color:var(--text);padding:20px;transition:.3s}
+.top-bar{display:flex;justify-content:flex-end;max-width:1100px;margin:0 auto}
+.theme-switch{cursor:pointer;background:var(--card);border:1px solid var(--border);padding:6px 12px;border-radius:20px;font-size:.9rem}
+.theme-switch input{display:none}
+.header{text-align:center;padding:20px 10px 30px}
+.main-heading{font-size:clamp(2.8rem, 8vw, 6rem);color:var(--accent);font-weight:800;letter-spacing:-2px;line-height:1}
+.header p{margin-top:12px;color:var(--muted);max-width:650px;margin-inline:auto}
+.url-box{display:flex;max-width:500px;margin:15px auto 0;background:var(--card);border:1px solid var(--border);border-radius:8px;overflow:hidden}
+.url-box input{flex:1;background:transparent;border:0;padding:10px;color:var(--text);font-size:.85rem}
+.url-box button{background:var(--accent);color:#0f172a;border:0;padding:0 16px;font-weight:600;cursor:pointer}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;max-width:1100px;margin:20px auto}
-.card{background:#1e293b;border:1px solid #334155;border-radius:14px;padding:18px;transition:.2s}
-.card:hover{transform:translateY(-4px);border-color:#38bdf8}
-.card h3{color:#f1f5f9;font-size:1.1rem;margin-bottom:6px}
-.card p{font-size:.85rem;color:#94a3b8;margin-bottom:12px}
-.card button{background:#38bdf8;color:#0f172a;border:0;padding:8px 14px;border-radius:8px;font-weight:600;cursor:pointer;width:100%}
-.tool-box{display:none;background:#1e293b;padding:20px;border-radius:14px;max-width:600px;margin:20px auto;border:1px solid #334155}
-.tool-box input,.tool-box textarea{width:100%;padding:10px;border-radius:8px;border:1px solid #334155;background:#0f172a;color:white;margin:8px 0}
-.result{margin-top:10px;background:#0f172a;padding:10px;border-radius:8px;font-size:.9rem}
-footer{text-align:center;margin-top:40px;color:#64748b;font-size:.8rem;padding:20px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:18px;transition:.2s;cursor:pointer}
+.card:hover{transform:translateY(-4px);border-color:var(--accent)}
+.card h3{color:var(--text);font-size:1.1rem;margin-bottom:6px}
+.card p{font-size:.85rem;color:var(--muted);margin-bottom:12px}
+.card button{background:var(--accent);color:#0f172a;border:0;padding:8px 14px;border-radius:8px;font-weight:600;cursor:pointer}
+.tool-box{display:none;background:var(--card);padding:20px;border-radius:14px;max-width:650px;margin:0 auto 25px;border:1px solid var(--border);animation:slideDown.3s ease}
+@keyframes slideDown{from{opacity:0;transform:translateY(-15px)}to{opacity:1;transform:translateY(0)}}
+.tool-box input,.tool-box textarea{width:100%;padding:10px;border-radius:8px;border:1px solid var(--border);background:var(--bg);color:var(--text);margin:8px 0}
+.result{margin:10px 0;background:var(--bg);padding:12px;border-radius:8px;font-size:.95rem;border:1px dashed var(--border);min-height:40px}
+.primary-btn{width:100%;background:var(--accent);color:#0f172a;border:0;padding:10px;border-radius:8px;font-weight:700;cursor:pointer;margin-top:8px}
+.small-btn{background:transparent;color:var(--accent);border:1px solid var(--accent);padding:6px 12px;border-radius:6px;cursor:pointer;margin:4px;font-size:.85rem}
+footer{text-align:center;margin-top:40px;color:var(--muted);font-size:.8rem;padding:20px}
 </style>
 </head>
 <body>
-<div class="header">
-<h1>Free Online Tools</h1>
-<p>100+ Free, Fast & Easy Tools for Everyone Worldwide - No Signup Needed. Image, Text, Calculators, Converters, SEO Tools & More.</p>
-<p style="margin-top:10px;font-size:.8rem">Your URL: <b>https://raoimran5684.github.io/free-online-tools/</b></p>
+<div class="top-bar">
+<label class="theme-switch"><input type="checkbox" id="themeToggle"> <span id="themeIcon">🌙 Dark</span></label>
 </div>
-<div class="grid" id="toolsGrid"></div>
+<div class="header">
+<h1 class="main-heading">Rao's Free Online Tools</h1>
+<p><span id="toolCount">0</span> Free, Fast & Easy Tools for Everyone Worldwide - No Signup Needed. Image, Text, Calculators, Converters & More.</p>
+<div class="url-box"><input id="urlInput" value="https://raoimran5684.github.io/free-online-tools/" readonly><button onclick="copyURL()">Copy</button></div>
+</div>
+
 <div id="toolContainer" class="tool-box">
 <h2 id="toolTitle"></h2>
 <div id="toolContent"></div>
-<button onclick="document.getElementById('toolContainer').style.display='none'" style="margin-top:10px;background:#334155;color:white;padding:8px 14px;border:0;border-radius:8px;width:100%">Close</button>
+<button onclick="document.getElementById('toolContainer').style.display='none'" style="margin-top:10px;background:transparent;color:var(--muted);border:0;cursor:pointer">✕ Close</button>
 </div>
-<footer>© 2026 Free Online Tools by Rao Imran - Worldwide Free Tools | Monetag Verified Ready</footer>
-<script src="https://quge5.com/88/tag.min.js" data-zone="265330" async data-cfasync="false"></script>
-<script>(function(s){s.dataset.zone='11460743',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+
+<div class="grid" id="toolsGrid"></div>
+<footer>© 2026 Free Online Tools by Rao Imran | Worldwide Free Tools</footer>
+
 <script>
- 
-
-
 const tools=[
 {name:"Age Calculator",desc:"Calculate exact age from DOB",func:ageCalc},
 {name:"Word Counter",desc:"Count words, chars, sentences",func:wordCount},
 {name:"QR Code Generator",desc:"Make QR for any text/link",func:qrGen},
-{name:"Password Generator",desc:"Strong random passwords",func:passGen},
+{name:"Password Generator",desc:"Strong random passwords with length",func:passGen},
 {name:"Case Converter",desc:"Upper, lower, title case",func:caseConv},
 {name:"BMI Calculator",desc:"Check your Body Mass Index",func:bmiCalc},
 {name:"Percentage Calculator",desc:"Find % easily",func:perCalc},
-{name:"Base64 Encoder",desc:"Encode / Decode Base64",func:b64Tool}
+{name:"Base64 Encoder",desc:"Encode / Decode Base64",func:b64Tool},
+{name:"Aspect Ratio Calculator",desc:"New - Calculate aspect ratios for design",func:aspectCalc},
+{name:"Timestamp Converter",desc:"New - Unix timestamp to date",func:timeCalc}
 ];
+
 const grid=document.getElementById('toolsGrid');
+document.getElementById('toolCount').innerText=tools.length;
+
 tools.forEach((t,i)=>{
  const card=document.createElement('div');
  card.className='card';
- card.innerHTML='<h3>'+t.name+'</h3><p>'+t.desc+'</p><button onclick="openTool('+i+')">Open Tool</button>';
+ card.onclick=()=>openTool(i);
+ card.innerHTML='<h3>'+t.name+'</h3><p>'+t.desc+'</p><button>Open Tool</button>';
  grid.appendChild(card);
 });
+
 function openTool(i){
  const t=tools[i];
  document.getElementById('toolTitle').innerText=t.name;
@@ -69,67 +85,85 @@ function openTool(i){
  t.func();
  window.scrollTo({top:document.getElementById('toolContainer').offsetTop-20,behavior:'smooth'});
 }
+function copyURL(){navigator.clipboard.writeText(document.getElementById('urlInput').value);alert('URL Copied!');}
+document.getElementById('themeToggle').addEventListener('change',function(e){
+ document.body.classList.toggle('light',e.target.checked);
+ document.getElementById('themeIcon').innerText=e.target.checked?'☀️ Light':'🌙 Dark';
+});
+
+// --- TOOL FUNCTIONS ---
 function ageCalc(){
- document.getElementById('toolContent').innerHTML='<input type="date" id="dob"><button onclick="calcAge()" style="background:#38bdf8;color:#0f172a;border:0;padding:8px 14px;border-radius:8px;width:100%;margin-top:8px">Calculate</button><div id="res" class="result"></div>';
+ document.getElementById('toolContent').innerHTML='<label>Enter DOB</label><input type="date" id="dob"><div id="res" class="result">Result will appear here</div><button onclick="calcAge()" class="primary-btn">Calculate Age</button>';
 }
 function calcAge(){
- const dob=new Date(document.getElementById('dob').value);
- if(!dob.getTime())return;
- const diff=Date.now()-dob.getTime();
- const age=new Date(diff).getUTCFullYear()-1970;
+ const dob=new Date(document.getElementById('dob').value); if(!dob.getTime())return;
+ const diff=Date.now()-dob.getTime(); const age=new Date(diff).getUTCFullYear()-1970;
+ document.getElementById('res').style.display='block';
  document.getElementById('res').innerText='You are '+age+' years old';
 }
 function wordCount(){
  document.getElementById('toolContent').innerHTML='<textarea id="txt" rows="5" placeholder="Type text..."></textarea><div id="res" class="result">0 Words, 0 Chars</div>';
  document.getElementById('txt').addEventListener('input',function(e){
-  const v=e.target.value.trim();
-  const w=v ? v.split(/\s+/).length : 0;
+  const v=e.target.value.trim(); const w=v? v.split(/\s+/).length:0;
   document.getElementById('res').innerText=w+' Words, '+e.target.value.length+' Chars';
  });
 }
 function qrGen(){
- document.getElementById('toolContent').innerHTML='<input id="qrtext" placeholder="Enter text or URL"><button onclick="makeQR()" style="background:#38bdf8;color:#0f172a;border:0;padding:8px 14px;border-radius:8px;width:100%;margin-top:8px">Generate</button><div id="res" class="result" style="text-align:center"></div>';
+ document.getElementById('toolContent').innerHTML='<input id="qrtext" placeholder="Enter text or URL"><div id="res" class="result">QR will appear here</div><button onclick="makeQR()" class="primary-btn">Generate QR</button>';
 }
 function makeQR(){
- const txt=document.getElementById('qrtext').value;
- if(!txt)return;
- document.getElementById('res').innerHTML='<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data='+encodeURIComponent(txt)+'" alt="QR">';
+ const txt=document.getElementById('qrtext').value; if(!txt)return;
+ document.getElementById('res').innerHTML='<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data='+encodeURIComponent(txt)+'">';
 }
 function passGen(){
- document.getElementById('toolContent').innerHTML='<button onclick="genPass()" style="background:#38bdf8;color:#0f172a;border:0;padding:8px 14px;border-radius:8px;width:100%">Generate Password</button><div id="res" class="result" style="font-weight:bold;font-size:1.1rem;word-break:break-all"></div>';
+ document.getElementById('toolContent').innerHTML='<label>Password Length</label><input type="number" id="passLen" value="12" min="4" max="64"><div id="res" class="result" style="font-family:monospace;word-break:break-all">Click Generate</div><button onclick="genPass()" class="primary-btn">Generate Password</button>';
 }
 function genPass(){
+ const len=parseInt(document.getElementById('passLen').value)||12;
  const chars="ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*";
- let p=""; for(let i=0;i<12;i++)p+=chars[Math.floor(Math.random()*chars.length)];
+ let p=""; for(let i=0;i<len;i++)p+=chars[Math.floor(Math.random()*chars.length)];
  document.getElementById('res').innerText=p;
 }
 function caseConv(){
- document.getElementById('toolContent').innerHTML='<textarea id="ctxt" rows="4" placeholder="Type..."></textarea><div style="display:flex;gap:6px;margin-top:8px"><button onclick="document.getElementById(&quot;ctxt&quot;).value=document.getElementById(&quot;ctxt&quot;).value.toUpperCase()" style="flex:1">UPPER</button><button onclick="document.getElementById(&quot;ctxt&quot;).value=document.getElementById(&quot;ctxt&quot;).value.toLowerCase()" style="flex:1">lower</button><button onclick="toTitle()" style="flex:1">Title</button></div>';
+ document.getElementById('toolContent').innerHTML='<textarea id="ctxt" rows="4" placeholder="Type..."></textarea><div style="margin:8px 0"><button onclick="document.getElementById(\'ctxt\').value=document.getElementById(\'ctxt\').value.toUpperCase()" class="small-btn">UPPER</button><button onclick="document.getElementById(\'ctxt\').value=document.getElementById(\'ctxt\').value.toLowerCase()" class="small-btn">lower</button><button onclick="toTitle()" class="small-btn">Title Case</button></div>';
 }
-function toTitle(){
- let v=document.getElementById('ctxt').value;
- document.getElementById('ctxt').value=v.replace(/\w\S*/g,function(w){return w.charAt(0).toUpperCase()+w.substr(1).toLowerCase();});
-}
+function toTitle(){let v=document.getElementById('ctxt').value; document.getElementById('ctxt').value=v.replace(/\w\S*/g,function(w){return w.charAt(0).toUpperCase()+w.substr(1).toLowerCase()})}
 function bmiCalc(){
- document.getElementById('toolContent').innerHTML='<input id="wh" type="number" placeholder="Weight kg"><input id="ht" type="number" placeholder="Height cm"><button onclick="calcBMI()" style="background:#38bdf8;color:#0f172a;border:0;padding:8px 14px;border-radius:8px;width:100%;margin-top:8px">Calculate BMI</button><div id="res" class="result"></div>';
+ document.getElementById('toolContent').innerHTML='<input id="wh" type="number" placeholder="Weight kg"><input id="ht" type="number" placeholder="Height cm"><div id="res" class="result">BMI will appear here</div><button onclick="calcBMI()" class="primary-btn">Calculate BMI</button>';
 }
 function calcBMI(){
- const w=parseFloat(document.getElementById('wh').value), h=parseFloat(document.getElementById('ht').value)/100;
- if(!w||!h)return;
- const bmi=(w/(h*h)).toFixed(2);
- document.getElementById('res').innerText='Your BMI is '+bmi;
+ const w=parseFloat(document.getElementById('wh').value), h=parseFloat(document.getElementById('ht').value)/100; if(!w||!h)return;
+ const bmi=(w/(h*h)).toFixed(2); document.getElementById('res').innerText='Your BMI is '+bmi;
 }
 function perCalc(){
- document.getElementById('toolContent').innerHTML='<input id="p2" type="number" placeholder="% of"><input id="p3" type="number" placeholder="Number"><button onclick="calcPer()" style="background:#38bdf8;color:#0f172a;border:0;padding:8px 14px;border-radius:8px;width:100%;margin-top:8px">Calculate</button><div id="res" class="result"></div>';
+ document.getElementById('toolContent').innerHTML='<input id="p2" type="number" placeholder="% of"><input id="p3" type="number" placeholder="Value"><div id="res" class="result">Result will appear here</div><button onclick="calcPer()" class="primary-btn">Calculate</button>';
 }
 function calcPer(){
- const a=parseFloat(document.getElementById('p2').value), b=parseFloat(document.getElementById('p3').value);
- if(!a||!b)return;
+ const a=parseFloat(document.getElementById('p2').value), b=parseFloat(document.getElementById('p3').value); if(!a||!b)return;
  document.getElementById('res').innerText='Result: '+(a/100)*b;
 }
 function b64Tool(){
- document.getElementById('toolContent').innerHTML='<textarea id="btxt" rows="4" placeholder="Enter text"></textarea><div style="display:flex;gap:6px;margin-top:8px"><button onclick="document.getElementById(&quot;bres&quot;).innerText=btoa(document.getElementById(&quot;btxt&quot;).value)" style="flex:1">Encode</button><button onclick="try{document.getElementById(&quot;bres&quot;).innerText=atob(document.getElementById(&quot;btxt&quot;).value)}catch(e){document.getElementById(&quot;bres&quot;).innerText=&quot;Invalid Base64&quot;}" style="flex:1">Decode</button></div><div id="bres" class="result" style="word-break:break-all"></div>';
+ document.getElementById('toolContent').innerHTML='<textarea id="btxt" rows="4" placeholder="Enter text"></textarea><div id="res" class="result">Result will appear here</div><div><button onclick="doB64(\'enc\')" class="small-btn">Encode Base64</button><button onclick="doB64(\'dec\')" class="small-btn">Decode Base64</button></div>';
 }
+function doB64(type){
+ const v=document.getElementById('btxt').value; try{
+  document.getElementById('res').innerText=type==='enc'?btoa(v):atob(v);
+ }catch(e){document.getElementById('res').innerText='Invalid input';}
+}
+function aspectCalc(){
+ document.getElementById('toolContent').innerHTML='<input id="aw" type="number" placeholder="Original Width"><input id="ah" type="number" placeholder="Original Height"><input id="nw" type="number" placeholder="New Width (leave empty if using height)"><input id="nh" type="number" placeholder="New Height (optional)"><div id="res" class="result">Aspect ratio will appear here</div><button onclick="calcAspect()" class="primary-btn">Calculate</button>';
+}
+function calcAspect(){
+ const aw=parseFloat(document.getElementById('aw').value), ah=parseFloat(document.getElementById('ah').value), nw=parseFloat(document.getElementById('nw').value), nh=parseFloat(document.getElementById('nh').value);
+ if(!aw||!ah)return; let r='Ratio: '+(aw/ah).toFixed(2)+':1 | '+(aw+':'+ah);
+ if(nw) r+=' | New Height: '+((nw*ah)/aw).toFixed(0); if(nh) r+=' | New Width: '+((nh*aw)/ah).toFixed(0);
+ document.getElementById('res').innerText=r;
+}
+function timeCalc(){
+ document.getElementById('toolContent').innerHTML='<button onclick="document.getElementById(\'tres\').innerText=Date.now()" class="small-btn">Current Timestamp</button><input id="ts" placeholder="Unix Timestamp"><div id="tres" class="result">Date will appear here</div><button onclick="convertTS()" class="primary-btn">Convert to Date</button><hr style="margin:12px 0"><input type="datetime-local" id="dt"><button onclick="convertDT()" class="small-btn">Date to Timestamp</button><div id="dres" class="result">Timestamp will appear here</div>';
+}
+function convertTS(){const ts=parseInt(document.getElementById('ts').value); if(!ts)return; document.getElementById('tres').innerText=new Date(ts*1000).toString();}
+function convertDT(){const d=new Date(document.getElementById('dt').value); if(!d.getTime())return; document.getElementById('dres').innerText=Math.floor(d.getTime()/1000);}
 </script>
 </body>
 </html>
